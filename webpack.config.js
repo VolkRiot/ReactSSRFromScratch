@@ -11,6 +11,33 @@ const common = {
 const clientConfig = {
   entry: './src/client/index.js',
   output: {
-    path: path.resolve(__dirname, 'public')
-  }
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  module: common,
+  plugins: [
+    new webpack.DefinePlugin({
+      __isBrowser__: 'true'
+    })
+  ]
 }
+
+const serverConfig = {
+  entry: './src/server/index.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'server.js',
+    publicPath: '/',
+  },
+  module: common,
+  plugins: [
+    new webpack.DefinePlugin({
+      __isBrowser__: 'false'
+    })
+  ]
+}
+
+module.exports = [clientConfig, serverConfig];
