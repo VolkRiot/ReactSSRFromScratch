@@ -1,11 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
-const nodeExternals = require("webpack-node-externals")
+const nodeExternals = require('webpack-node-externals')
 
 const common = {
   rules: [
-    {test: /\.(js)$/, user: 'babel-loader'}
-  ]
+    {
+      test: /\.(js)$/,
+      use: 'babel-loader',
+    },
+  ],
 }
 
 const clientConfig = {
@@ -13,14 +16,14 @@ const clientConfig = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: common,
   plugins: [
     new webpack.DefinePlugin({
-      __isBrowser__: 'true'
-    })
-  ]
+      __isBrowser__: 'true',
+    }),
+  ],
 }
 
 const serverConfig = {
@@ -35,9 +38,9 @@ const serverConfig = {
   module: common,
   plugins: [
     new webpack.DefinePlugin({
-      __isBrowser__: 'false'
-    })
-  ]
+      __isBrowser__: 'false',
+    }),
+  ],
 }
 
-module.exports = [clientConfig, serverConfig];
+module.exports = [clientConfig, serverConfig]

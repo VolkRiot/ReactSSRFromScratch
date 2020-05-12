@@ -1,8 +1,8 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 
-import Loading from './Loading';
+import Loading from './Loading'
 
 const Movie = ({ loading, data }) => (
   <div className="post container">
@@ -15,7 +15,9 @@ const Movie = ({ loading, data }) => (
       <div className="card">
         <div className="card-header">
           <div className="card-title h5">{data.title}</div>
-          <div className="card-subtitle text-gray">IMDB Rating - {data.rating}</div>
+          <div className="card-subtitle text-gray">
+            IMDB Rating - {data.rating}
+          </div>
         </div>
         <div className="card-body">{data.plot}</div>
         <div className="card-footer">
@@ -26,6 +28,6 @@ const Movie = ({ loading, data }) => (
       </div>
     )}
   </div>
-);
+)
 
-export default Movie;
+export default Movie

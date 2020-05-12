@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
@@ -10,7 +10,7 @@ const Home = ({ loading, data }) => (
     </Helmet>
     {loading ? <Loading /> : <Table movies={data} />}
   </div>
-);
+)
 
 const Table = ({ movies }) => (
   <table className="table table-striped">
@@ -20,9 +20,13 @@ const Table = ({ movies }) => (
         <th>Rating</th>
       </tr>
     </thead>
-    <tbody>{movies.map(movie => <Row key={movie.id} {...movie} />)}</tbody>
+    <tbody>
+      {movies.map((movie) => (
+        <Row key={movie.id} {...movie} />
+      ))}
+    </tbody>
   </table>
-);
+)
 
 const Row = ({ id, title, rating }) => (
   <tr>
@@ -31,6 +35,6 @@ const Row = ({ id, title, rating }) => (
     </td>
     <td>{rating}</td>
   </tr>
-);
+)
 
-export default Home;
+export default Home

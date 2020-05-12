@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => (
   <header className="navbar container">
@@ -14,6 +14,6 @@ const Navbar = () => (
       </li>
     </ul>
   </header>
-);
+)
 
-export default Navbar;
+export default Navbar
