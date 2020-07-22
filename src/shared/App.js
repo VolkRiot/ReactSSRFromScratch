@@ -12,6 +12,7 @@ function App() {
     <div className="app">
       <Navbar />
       <main>
+        <p>Hello SSR Render</p>
         <Switch>
           {routes.map(({ path, exact, Component, ...rest }) => (
             <Route

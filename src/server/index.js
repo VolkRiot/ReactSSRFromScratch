@@ -1,5 +1,4 @@
 import express from 'express'
-import cors from 'cors'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { renderToString } from 'react-dom/server'
@@ -12,12 +11,10 @@ import template from './template'
 
 const app = express()
 
-app.use(cors())
-
 app.use(express.static('public'))
 
 app.get('*', (req, res, next) => {
-  const activeRoute = routes.find((path) => matchPath(req.path, path)) || {}
+  const activeRoute = routes.find(({ path }) => matchPath(req.path, path))
 
   const apiResponse = activeRoute.getInitialData
     ? activeRoute.getInitialData(req.path)
@@ -25,6 +22,7 @@ app.get('*', (req, res, next) => {
 
   apiResponse
     .then((data) => {
+      console.log('DATA', data)
       const markup = renderToString(
         <StaticRouter location={req.url} context={{ data }}>
           <App />
@@ -37,8 +35,6 @@ app.get('*', (req, res, next) => {
     .catch(next)
 })
 
-const PORT = 3000
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
+app.listen(3000, () => {
+  console.log(`Server is listening on port ${3000}`)
 })

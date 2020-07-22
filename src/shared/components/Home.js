@@ -2,15 +2,24 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
+import { fetchAllMovies, fetchMovieById } from '../apiCalls'
 
 const Home = ({ loading, data }) => (
   <div className="home container">
     <Helmet>
-      <title>FavMovies - Home</title>
+      <title>{'Movies - Home'}</title>
     </Helmet>
     {loading ? <Loading /> : <Table movies={data} />}
   </div>
 )
+
+Home.getInitialProps = (req) => {
+  const movies = fetchAllMovies()
+
+  return {
+    ...movies,
+  }
+}
 
 const Table = ({ movies }) => (
   <table className="table table-striped">
